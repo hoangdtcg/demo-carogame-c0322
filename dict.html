@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let english = ["hi","bye","dog","cat","chicken"];
+  let vietnamese = ["Chào mày","Cút","Choá","Mèo méo meo","Zun"];
+
+  let word = prompt("Nhập từ cần dịch").toLowerCase();
+  // let index = english.indexOf(word.toLowerCase());
+  // console.log(index);
+  // if(index == -1){
+  //     alert("Từ này khó quá, chịu");
+  // }else {
+  //     alert(vietnamese[index]);
+  // }
+
+  let index = -1; //cờ hiệu
+  for (let i = 0; i < english.length; i++) {
+      if(word == english[i]){
+          index = i;
+      }
+  }
+
+  if(index != -1){
+      alert(vietnamese[index])
+  }else {
+      alert("Không tìm thấy")
+  }
+
+</script>
+</body>
+</html>

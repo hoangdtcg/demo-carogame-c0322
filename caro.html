@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caro Game</title>
+</head>
+<style>
+  td{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+  }
+</style>
+<body>
+<table id="board" border="1px"></table>
+
+<script>
+  const PLAYER1 = "X";
+  const PLAYER2 = "O";
+  let turn = PLAYER1;
+
+  function createBoard(row,col) {
+    let str = "";
+    for (let i = 0; i < row; i++) {
+        str+="<tr>";
+      for (let j = 0; j < col; j++) {
+        str+=`<td id="cell-${j}-${i}" onclick='clickCell(${j},${i})'></td>`
+      }
+        str+="</tr>";
+    }
+
+    document.getElementById('board').innerHTML = str;
+  }
+
+  function clickCell(x,y) {
+    let cell = document.getElementById(`cell-${x}-${y}`);
+    if(cell.innerHTML === ""){
+      if(turn === PLAYER1){
+        cell.innerHTML = PLAYER1;
+        turn = PLAYER2;
+      }else {
+        cell.innerHTML = PLAYER2;
+        turn = PLAYER1;
+      }
+
+      checkNgang(x,y);
+      checkDoc(x,y);
+    }
+  }
+
+  function getValueOfCell(x,y) {
+    let cell = document.getElementById(`cell-${x}-${y}`);
+    return cell.innerHTML;
+  }
+
+  function checkNgang(x,y) {
+    let cell = getValueOfCell(x,y);
+    let i = 1;
+    let count = 1;
+    while (cell == getValueOfCell(x+i,y)){
+      count++;
+      i++;
+    }
+
+    i = 1;
+    while (cell == getValueOfCell(x-i,y)){
+      count++;
+      i++;
+    }
+
+    if(count >= 5 ){
+      alert("Win")
+    }
+  }
+
+  function checkDoc(x,y) {
+    let cell = getValueOfCell(x,y);
+    let i = 1;
+    let count = 1;
+    while (cell == getValueOfCell(x,y+i)){
+      count++;
+      i++;
+    }
+
+    i = 1;
+    while (cell == getValueOfCell(x,y-i)){
+      count++;
+      i++;
+    }
+
+    if(count >= 5 ){
+      alert("Win")
+    }
+  }
+
+  createBoard(10,10);
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let arr = ["Tiến lên","Hồng Rose", "Thịnh suy thận","Dương quá tay"];
+  // arr[4] = 10;
+  // alert(arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    let member = arr[i];
+    document.write(member + "<br>");
+  }
+
+  // for (let i in arr) {
+  //   console.log(i) //0,1,2,3
+  //   // console.log(arr[member])
+  // }
+
+  for (let member of arr) {
+    console.log(member)
+  }
+</script>
+</body>
+</html>
